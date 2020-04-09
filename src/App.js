@@ -13,7 +13,14 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post('repositories', {
+      "title": "Repositorio adicionado pelo frontend",
+      "url": "https://github.com/picinatto/desafio-conceitos-=reactjs",
+      "techs": ["ReactJS"]
+    });
+
+    const repository = response.data;
+    setRepositories([...repositories, repository]);
   }
 
   async function handleRemoveRepository(id) {
